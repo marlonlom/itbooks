@@ -1,0 +1,33 @@
+[versions]
+agp = "8.8.0"
+kotlin = "2.1.10"
+spotless = "7.0.2"
+
+[libraries]
+# implementation
+androidx-activity-compose = "androidx.activity:activity-compose:1.10.0"
+androidx-core-ktx = "androidx.core:core-ktx:1.15.0"
+androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
+
+# implementation/androidx-compose
+androidx-compose-bom = "androidx.compose:compose-bom:2025.01.01"
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-material3 = { module = "androidx.compose.material3:material3" }
+
+# android-test-implementation
+androidx-espresso-core = "androidx.test.espresso:espresso-core:3.6.1"
+androidx-junit = "androidx.test.ext:junit:1.2.1"
+
+# test-implementation
+junit = "junit:junit:4.13.2"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
