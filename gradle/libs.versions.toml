@@ -1,6 +1,7 @@
 [versions]
 agp = "8.8.1"
 kotlin = "2.1.10"
+ksp = "2.1.10-1.0.29"
 spotless = "7.0.2"
 
 [libraries]
@@ -9,6 +10,11 @@ androidx-activity-compose = "androidx.activity:activity-compose:1.10.0"
 androidx-core-ktx = "androidx.core:core-ktx:1.15.0"
 androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
+
+# implementation/androidx-room
+androidx-room-ktx = "androidx.room:room-ktx:2.6.1"
+androidx-room-runtime = "androidx.room:room-runtime:2.6.1"
+androidx-room-compiler = "androidx.room:room-compiler:2.6.1"
 
 # implementation/androidx-compose
 androidx-compose-bom = "androidx.compose:compose-bom:2025.02.00"
@@ -29,6 +35,11 @@ junit = "junit:junit:4.13.2"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+
+[bundles]
+androidx-room = ["androidx-room-ktx", "androidx-room-runtime"]
