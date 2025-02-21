@@ -26,9 +26,16 @@ androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
 
+# implementation/koin
+koin-bom = "io.insert-koin:koin-bom:4.0.2"
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+
 # android-test-implementation
+androidx-arch-core-testing = "androidx.arch.core:core-testing:2.2.0"
 androidx-espresso-core = "androidx.test.espresso:espresso-core:3.6.1"
 androidx-junit = "androidx.test.ext:junit:1.2.1"
+google-truth = "com.google.truth:truth:1.4.4"
 
 # test-implementation
 junit = "junit:junit:4.13.2"
@@ -43,3 +50,4 @@ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 
 [bundles]
 androidx-room = ["androidx-room-ktx", "androidx-room-runtime"]
+koin = ["koin-core", "koin-androidx-compose"]
