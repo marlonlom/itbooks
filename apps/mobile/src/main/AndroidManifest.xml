@@ -15,6 +15,7 @@
     android:fullBackupContent="@xml/backup_rules"
     android:icon="@mipmap/ic_launcher_foreground"
     android:label="@string/app_name"
+    android:name=".ITBooksApp"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.ITBooks"
@@ -24,6 +25,7 @@
     <activity
       android:name=".ui.main.MainActivity"
       android:exported="true"
+      android:windowSoftInputMode="adjustResize"
       android:theme="@style/Theme.ITBooks">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
