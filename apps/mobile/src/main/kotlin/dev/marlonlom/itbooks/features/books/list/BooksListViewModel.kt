@@ -35,7 +35,13 @@ class BooksListViewModel(private val repository: BooksListRepository) : ViewMode
     _uiState.update { NewBooksListUiState.Loading }
     delay(2000L)
     repository.fetchBooks().collect { books ->
-      _uiState.update { NewBooksListUiState.Success(books) }
+      _uiState.update {
+        if (books.isEmpty()) {
+          NewBooksListUiState.Empty
+        } else {
+          NewBooksListUiState.Success(books)
+        }
+      }
     }
   }
 }
