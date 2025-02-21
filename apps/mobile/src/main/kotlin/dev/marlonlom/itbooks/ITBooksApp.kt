@@ -11,6 +11,11 @@ import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import coil.util.DebugLogger
+import dev.marlonlom.itbooks.di.appKoinModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 /**
  * ITBooks Application class.
@@ -23,6 +28,15 @@ class ITBooksApp :
 
   override fun onCreate() {
     super.onCreate()
+    this.setupKoin()
+  }
+
+  private fun setupKoin() {
+    startKoin {
+      androidContext(this@ITBooksApp)
+      androidLogger(Level.DEBUG)
+      modules(appKoinModule)
+    }
   }
 
   override fun newImageLoader(): ImageLoader = ImageLoader(this)

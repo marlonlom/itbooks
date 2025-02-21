@@ -5,5 +5,5 @@
   SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-  <string name="app_name">IT Books</string>
+  <string name="app_name" translatable="false">IT Books</string>
 </resources>
