@@ -1,3 +1,7 @@
+/*
+ * Copyright 2024 Marlonlom
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import dev.marlonlom.itbooks.core.database.LocalDataSource
 import dev.marlonlom.itbooks.core.database.books.detail.NewBookDetailEntity
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity

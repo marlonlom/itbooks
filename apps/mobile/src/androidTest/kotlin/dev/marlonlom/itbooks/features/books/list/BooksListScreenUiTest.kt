@@ -1,3 +1,7 @@
+/*
+ * Copyright 2024 Marlonlom
+ * SPDX-License-Identifier: Apache-2.0
+ */
 package dev.marlonlom.itbooks.features.books.list
 
 import androidx.compose.ui.test.isDisplayed
@@ -40,7 +44,7 @@ internal class BooksListScreenUiTest {
         BooksListScreen(
           onBookListItemClicked = {},
           settingsIconClicked = {},
-          viewModel = BooksListViewModel(BooksListRepository(datasource))
+          viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
       onNodeWithText("IT Books").isDisplayed()
@@ -66,7 +70,7 @@ internal class BooksListScreenUiTest {
           settingsIconClicked = {
             settingsIconClicked = true
           },
-          viewModel = BooksListViewModel(BooksListRepository(datasource))
+          viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
       onNodeWithText("IT Books").isDisplayed()
@@ -107,7 +111,7 @@ internal class BooksListScreenUiTest {
         BooksListScreen(
           onBookListItemClicked = {},
           settingsIconClicked = {},
-          viewModel = BooksListViewModel(BooksListRepository(datasource))
+          viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
       onNodeWithText("IT Books").isDisplayed()
@@ -151,7 +155,7 @@ internal class BooksListScreenUiTest {
             selectedBook = it
           },
           settingsIconClicked = {},
-          viewModel = BooksListViewModel(BooksListRepository(datasource))
+          viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
       onNodeWithText("IT Books").isDisplayed()
