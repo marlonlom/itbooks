@@ -4,7 +4,6 @@
  */
 package dev.marlonlom.itbooks.features.books.list
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +32,7 @@ import org.koin.androidx.compose.koinViewModel
  *
  * @author marlonlom
  *
+ * @param onBookListItemClicked Action for book item clicked.
  * @param settingsIconClicked Action for settings icon clicked.
  * @param modifier The modifier for this composable.
  * @param viewModel Books listing Viewmodel dependency.
@@ -40,6 +40,7 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BooksListScreen(
+  onBookListItemClicked: (String) -> Unit,
   settingsIconClicked: () -> Unit,
   modifier: Modifier = Modifier,
   viewModel: BooksListViewModel = koinViewModel(),
@@ -52,6 +53,7 @@ fun BooksListScreen(
 
   LazyColumn(
     modifier = modifier
+      .fillMaxWidth()
       .background(MaterialTheme.colorScheme.surface),
   ) {
     stickyHeader {
@@ -59,7 +61,7 @@ fun BooksListScreen(
     }
 
     when (uiState) {
-      NewBooksListUiState.Empty -> {
+      BooksListUiState.Empty -> {
         item {
           Column(modifier = Modifier.fillMaxWidth()) {
             HorizontalDivider(
@@ -76,7 +78,7 @@ fun BooksListScreen(
         }
       }
 
-      NewBooksListUiState.Loading -> {
+      BooksListUiState.Loading -> {
         item {
           Column(
             modifier = Modifier.fillMaxWidth(),
@@ -94,8 +96,8 @@ fun BooksListScreen(
         }
       }
 
-      is NewBooksListUiState.Success -> {
-        val books = (uiState as NewBooksListUiState.Success).books
+      is BooksListUiState.Success -> {
+        val books = (uiState as BooksListUiState.Success).books
         items(
           count = books.size,
           key = { index -> books[index].isbn13 },
@@ -103,7 +105,7 @@ fun BooksListScreen(
           BooksListRow(
             book = books[pos],
             onBookListItemClicked = { isbn13 ->
-              Log.d("BooksListScreen", "Book list row clicked: $isbn13")
+              onBookListItemClicked(isbn13)
             },
           )
         }
