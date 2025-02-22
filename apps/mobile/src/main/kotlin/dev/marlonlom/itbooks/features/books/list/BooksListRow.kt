@@ -22,11 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import dev.marlonlom.itbooks.R
 
 /**
  * Book list row composable.
@@ -40,6 +43,7 @@ import coil.request.ImageRequest
 internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -> Unit) {
   Column(
     modifier = Modifier
+      .testTag("book_list_item_row_${book.isbn13}")
       .padding(vertical = 5.dp)
       .clickable {
         onBookListItemClicked(book.isbn13)
@@ -58,7 +62,7 @@ internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -
           .placeholder(MaterialTheme.colorScheme.primaryContainer.value.toInt())
           .error(MaterialTheme.colorScheme.errorContainer.value.toInt()).crossfade(true).build(),
         contentScale = ContentScale.Crop,
-        contentDescription = "Book picture for ${book.title}",
+        contentDescription = stringResource(R.string.text_book_list_item_picture_cd, book.title),
         modifier = Modifier
           .height(140.dp)
           .background(Color.Transparent)
