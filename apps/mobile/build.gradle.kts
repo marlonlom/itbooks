@@ -6,6 +6,7 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -17,7 +18,7 @@ android {
     minSdk = 24
     targetSdk = 35
     versionCode = 1
-    versionName = "1.0"
+    versionName = "1.0.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -62,6 +63,7 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.bundles.androidx.room)
+  implementation(libs.bundles.androidx.m3.adaptive)
   implementation(libs.bundles.koin)
   implementation(libs.coil.compose)
 
