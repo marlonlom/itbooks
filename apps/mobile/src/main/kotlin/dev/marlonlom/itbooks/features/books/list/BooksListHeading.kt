@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -51,7 +52,7 @@ internal fun BooksListHeading(settingsIconClicked: () -> Unit) {
     ) {
       Image(
         painter = painterResource(R.drawable.img_brand),
-        contentDescription = null,
+        contentDescription = stringResource(R.string.text_books_list_heading_img_cd),
         contentScale = ContentScale.Inside,
         modifier = Modifier
           .width(64.dp)
@@ -64,7 +65,10 @@ internal fun BooksListHeading(settingsIconClicked: () -> Unit) {
       )
     }
 
-    IconButton(onClick = { settingsIconClicked() }) {
+    IconButton(
+      modifier = Modifier.testTag("heading_settings_btn"),
+      onClick = { settingsIconClicked() },
+    ) {
       Icon(
         imageVector = Icons.Rounded.Settings,
         contentDescription = null,
