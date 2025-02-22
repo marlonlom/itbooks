@@ -59,7 +59,7 @@ internal class NewBookDetailDaoTest {
     assertThat(detail).isEqualTo(books[0])
   }
 
-  private fun newBookDetailEntities(intRange: IntRange) = (intRange).map {
+  private fun newBookDetailEntities(intRange: IntRange) = intRange.map {
     NewBookDetailEntity(
       isbn13 = "13$it",
       title = "Book $it",
