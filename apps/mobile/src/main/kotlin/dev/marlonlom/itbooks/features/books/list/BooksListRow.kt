@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,7 +38,7 @@ import coil.request.ImageRequest
  * @param onBookListItemClicked Action for book item clicked.
  */
 @Composable
-internal fun BooksListRow(book: NewBookListItem, onBookListItemClicked: (String) -> Unit) {
+internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -> Unit) {
   Column(
     modifier = Modifier
       .padding(vertical = 5.dp)
@@ -60,7 +61,8 @@ internal fun BooksListRow(book: NewBookListItem, onBookListItemClicked: (String)
         contentScale = ContentScale.Crop,
         contentDescription = "Book picture for ${book.title}",
         modifier = Modifier
-          .height(84.dp)
+          .width(80.dp)
+          .height(100.dp)
           .background(Color.Transparent)
           .aspectRatio(5 / 7f),
       )
@@ -71,6 +73,7 @@ internal fun BooksListRow(book: NewBookListItem, onBookListItemClicked: (String)
           text = book.title,
           style = MaterialTheme.typography.bodyMedium,
           fontWeight = FontWeight.Bold,
+          color = MaterialTheme.colorScheme.onSurface,
           maxLines = 2,
           overflow = TextOverflow.Ellipsis,
         )
@@ -89,7 +92,8 @@ internal fun BooksListRow(book: NewBookListItem, onBookListItemClicked: (String)
             .padding(vertical = 4.dp, horizontal = 8.dp),
           text = book.price,
           maxLines = 1,
-          style = MaterialTheme.typography.labelSmall,
+          color = MaterialTheme.colorScheme.onSurface,
+          style = MaterialTheme.typography.labelMedium,
         )
       }
     }

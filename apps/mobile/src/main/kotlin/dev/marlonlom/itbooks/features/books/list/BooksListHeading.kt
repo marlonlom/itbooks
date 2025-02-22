@@ -59,7 +59,8 @@ internal fun BooksListHeading(settingsIconClicked: () -> Unit) {
       )
       Text(
         text = stringResource(R.string.app_name),
-        style = MaterialTheme.typography.headlineLarge,
+        color = MaterialTheme.colorScheme.onSurface,
+        style = MaterialTheme.typography.displayLarge,
       )
     }
 
@@ -67,6 +68,7 @@ internal fun BooksListHeading(settingsIconClicked: () -> Unit) {
       Icon(
         imageVector = Icons.Rounded.Settings,
         contentDescription = null,
+        tint = MaterialTheme.colorScheme.onSurface,
       )
     }
   }

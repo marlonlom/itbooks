@@ -8,7 +8,7 @@ import androidx.compose.runtime.Immutable
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
 
 /**
- * IT Book list ui item data class.
+ * IT Books list ui item data class.
  *
  * @author marlonlom
  *
@@ -18,18 +18,18 @@ import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
  * @property picture Book picture url.
  */
 @Immutable
-data class BookListItem(val isbn13: String, val title: String, val price: String, val picture: String) {
+data class BooksListItem(val isbn13: String, val title: String, val price: String, val picture: String) {
 
   companion object {
 
     /**
-     * Creates a new [BookListItem] from [NewBookEntity] database entity.
+     * Creates a new [BooksListItem] from [NewBookEntity] database entity.
      *
      * @param entity Database entity
-     * @return New instance of [BookListItem] from database entity.
+     * @return New instance of [BooksListItem] from database entity.
      */
     @JvmStatic
-    fun fromEntity(entity: NewBookEntity): BookListItem = BookListItem(
+    fun fromEntity(entity: NewBookEntity): BooksListItem = BooksListItem(
       isbn13 = entity.isbn13,
       title = entity.title,
       picture = entity.picture,

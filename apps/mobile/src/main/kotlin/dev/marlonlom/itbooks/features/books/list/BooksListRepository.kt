@@ -22,6 +22,6 @@ class BooksListRepository(private val localDataSource: LocalDataSource) {
    *
    * @return books list as Flow.
    */
-  fun fetchBooks(): Flow<List<NewBookListItem>> = localDataSource.listNewBooks()
-    .map { entities -> entities.map { NewBookListItem.fromEntity(it) } }
+  fun fetchBooks(): Flow<List<BooksListItem>> = localDataSource.listNewBooks()
+    .map { entities -> entities.map { BooksListItem.fromEntity(it) } }
 }
