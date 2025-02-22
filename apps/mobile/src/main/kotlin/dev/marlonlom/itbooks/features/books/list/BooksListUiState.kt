@@ -32,5 +32,5 @@ sealed interface NewBooksListUiState {
    *
    * @property books New books list data.
    */
-  data class Success(val books: List<NewBookListItem>) : NewBooksListUiState
+  data class Success(val books: List<BookListItem>) : NewBooksListUiState
 }
