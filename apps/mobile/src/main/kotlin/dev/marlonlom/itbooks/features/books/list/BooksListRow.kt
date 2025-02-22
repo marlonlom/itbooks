@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -47,7 +46,7 @@ internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -
       },
   ) {
     HorizontalDivider(
-      modifier = Modifier.padding(bottom = 5.dp),
+      modifier = Modifier.padding(bottom = 2.dp),
       color = MaterialTheme.colorScheme.surfaceVariant,
     )
     Row(
@@ -61,8 +60,7 @@ internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -
         contentScale = ContentScale.Crop,
         contentDescription = "Book picture for ${book.title}",
         modifier = Modifier
-          .width(80.dp)
-          .height(100.dp)
+          .height(140.dp)
           .background(Color.Transparent)
           .aspectRatio(5 / 7f),
       )
@@ -89,7 +87,7 @@ internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -
               color = MaterialTheme.colorScheme.onSurfaceVariant,
               shape = MaterialTheme.shapes.small,
             )
-            .padding(vertical = 4.dp, horizontal = 8.dp),
+            .padding(horizontal = 8.dp),
           text = book.price,
           maxLines = 1,
           color = MaterialTheme.colorScheme.onSurface,
