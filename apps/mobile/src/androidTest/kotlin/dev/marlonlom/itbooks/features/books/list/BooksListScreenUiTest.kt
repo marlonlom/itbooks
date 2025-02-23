@@ -50,7 +50,15 @@ internal class BooksListScreenUiTest {
       onNodeWithText("IT Books").isDisplayed()
       onNodeWithContentDescription("Brand image for IT Books").isDisplayed()
       onNodeWithTag("heading_settings_btn").isDisplayed()
-      onNodeWithText("No books to show :(").isDisplayed()
+      onNodeWithContentDescription("Image for books empty list").isDisplayed()
+      onNodeWithText(
+        text = "Oops! We couldn\'t find any books here.",
+        substring = true,
+      ).isDisplayed()
+      onNodeWithText(
+        text = "We\'re adding new books to keep you updated.",
+        substring = true,
+      ).isDisplayed()
     }
   }
 
