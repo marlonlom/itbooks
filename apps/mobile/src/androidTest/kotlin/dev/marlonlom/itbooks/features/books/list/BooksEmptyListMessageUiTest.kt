@@ -20,7 +20,7 @@ class BooksEmptyListMessageUiTest {
   val composeTestRule = createComposeRule()
 
   @Test
-  fun shouldClickHeadingSettingsButton() {
+  fun shouldDisplayEmptyBooksListUI() {
     with(composeTestRule) {
       setContent {
         BooksEmptyListMessage()
