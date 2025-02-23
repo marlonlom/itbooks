@@ -9,4 +9,7 @@
   <!-- feature: books list -->
   <string name="text_books_list_heading_img_cd">Brand image for IT Books</string>
   <string name="text_book_list_item_picture_cd">Book picture for %1$s</string>
+  <string name="text_books_empty_list_cd">Image for books empty list</string>
+  <string name="text_books_list_empty_title01">Oops! We couldn\'t find any books here.</string>
+  <string name="text_books_list_empty_title02">We\'re adding new books to keep you updated.</string>
 </resources>
