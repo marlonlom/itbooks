@@ -40,8 +40,7 @@ internal fun BooksEmptyListMessage() = Column(modifier = Modifier.fillMaxSize())
   )
   Column(
     modifier = Modifier
-      .background(MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.25f), MaterialTheme.shapes.large)
-      .border(1.dp, MaterialTheme.colorScheme.error, MaterialTheme.shapes.large)
+      .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.25f), MaterialTheme.shapes.large)
       .padding(vertical = 20.dp),
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -69,7 +68,7 @@ internal fun BooksEmptyListMessage() = Column(modifier = Modifier.fillMaxSize())
         .padding(top = 20.dp),
       textAlign = TextAlign.Center,
       fontWeight = FontWeight.Bold,
-      color = MaterialTheme.colorScheme.onErrorContainer,
+      color = MaterialTheme.colorScheme.onSurface,
       text = annotatedString,
     )
   }
