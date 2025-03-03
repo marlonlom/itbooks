@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 /**
- * Books list repository class.
+ * IT Books list repository class.
  *
  * @author marlonlom
  *

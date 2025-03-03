@@ -6,7 +6,9 @@ package dev.marlonlom.itbooks.features.books.list
 
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
@@ -27,6 +29,7 @@ internal class BooksListItemTest {
     assertEquals(entity.isbn13, booksListItem.isbn13)
     assertEquals(entity.title, booksListItem.title)
     assertEquals(entity.price, booksListItem.price)
+    assertFalse(booksListItem.isFree)
     assertEquals(entity.picture, booksListItem.picture)
   }
 
@@ -42,7 +45,8 @@ internal class BooksListItemTest {
     assertNotNull(booksListItem)
     assertEquals(entity.isbn13, booksListItem.isbn13)
     assertEquals(entity.title, booksListItem.title)
-    assertEquals("Free", booksListItem.price)
+    assertEquals("$0.00", booksListItem.price)
+    assertTrue(booksListItem.isFree)
     assertEquals(entity.picture, booksListItem.picture)
   }
 }

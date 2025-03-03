@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /**
- * Books list viewmodel class.
+ * IT Books list viewmodel class.
  *
  * @author marlonlom
  *

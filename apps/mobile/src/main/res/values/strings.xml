@@ -6,6 +6,7 @@
 -->
 <resources>
   <string name="app_name" translatable="false">IT Books</string>
+  <string name="text_free">Free</string>
   <!-- feature: books list -->
   <string name="text_books_list_heading_img_cd">Brand image for IT Books</string>
   <string name="text_book_list_item_picture_cd">Book picture for %1$s</string>

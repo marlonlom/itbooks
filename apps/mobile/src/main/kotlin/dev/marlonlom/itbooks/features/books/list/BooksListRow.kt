@@ -92,7 +92,7 @@ internal fun BooksListRow(book: BooksListItem, onBookListItemClicked: (String) -
               shape = MaterialTheme.shapes.small,
             )
             .padding(horizontal = 8.dp),
-          text = book.price,
+          text = if (book.isFree) stringResource(R.string.text_free) else book.price,
           maxLines = 1,
           color = MaterialTheme.colorScheme.onSurface,
           style = MaterialTheme.typography.labelMedium,
