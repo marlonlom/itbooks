@@ -20,6 +20,9 @@ import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
 @Immutable
 data class BooksListItem(val isbn13: String, val title: String, val price: String, val picture: String) {
 
+  /** Returns True/False if book price is Zero. */
+  val isFree: Boolean get() = price == "$0.00"
+
   companion object {
 
     /**
@@ -33,10 +36,7 @@ data class BooksListItem(val isbn13: String, val title: String, val price: Strin
       isbn13 = entity.isbn13,
       title = entity.title,
       picture = entity.picture,
-      price = when (entity.price) {
-        "$0.00" -> "Free"
-        else -> entity.price
-      },
+      price = entity.price,
     )
   }
 }
