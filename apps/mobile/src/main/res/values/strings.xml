@@ -6,11 +6,19 @@
 -->
 <resources>
   <string name="app_name" translatable="false">IT Books</string>
+  <!-- general -->
   <string name="text_free">Free</string>
+  <string name="text_rating">Rating</string>
+  <string name="text_authors">Authors</string>
+  <string name="text_publisher">Publisher</string>
+  <string name="text_read_more">Read more</string>
   <!-- feature: books list -->
   <string name="text_books_list_heading_img_cd">Brand image for IT Books</string>
   <string name="text_book_list_item_picture_cd">Book picture for %1$s</string>
   <string name="text_books_empty_list_cd">Image for books empty list</string>
   <string name="text_books_list_empty_title01">Oops! We couldn\'t find any books here.</string>
   <string name="text_books_list_empty_title02">We\'re adding new books to keep you updated.</string>
+  <!-- feature: book detail -->
+  <string name="text_book_detail_url" translatable="false">https://itbook.store/books/%1$s</string>
+  <string name="text_book_details_description">About the book</string>
 </resources>
