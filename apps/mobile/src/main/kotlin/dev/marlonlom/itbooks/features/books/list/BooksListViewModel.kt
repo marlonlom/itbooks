@@ -22,7 +22,10 @@ import kotlinx.coroutines.launch
  */
 class BooksListViewModel(private val repository: BooksListRepository) : ViewModel() {
 
+  /** IT books list ui mutable state flow. */
   private val _uiState: MutableStateFlow<BooksListUiState> = MutableStateFlow(BooksListUiState.Empty)
+
+  /** IT books list ui state flow. */
   val uiState: StateFlow<BooksListUiState> = _uiState
     .stateIn(
       scope = viewModelScope,
@@ -30,14 +33,19 @@ class BooksListViewModel(private val repository: BooksListRepository) : ViewMode
       initialValue = BooksListUiState.Loading,
     )
 
-  fun fetchBooksList() = viewModelScope.launch {
-    _uiState.update { BooksListUiState.Loading }
-    repository.fetchBooks().collect { books ->
-      _uiState.update {
-        if (books.isEmpty()) {
-          BooksListUiState.Empty
-        } else {
-          BooksListUiState.Success(books)
+  /**
+   * Executes the async fetching of the it new books list query.
+   */
+  fun fetchBooksList() {
+    viewModelScope.launch {
+      _uiState.update { BooksListUiState.Loading }
+      repository.fetchBooks().collect { books ->
+        _uiState.update {
+          if (books.isEmpty()) {
+            BooksListUiState.Empty
+          } else {
+            BooksListUiState.Success(books)
+          }
         }
       }
     }
