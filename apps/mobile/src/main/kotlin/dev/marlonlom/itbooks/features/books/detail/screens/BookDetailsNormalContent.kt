@@ -68,7 +68,7 @@ internal fun BookDetailsNormalContent(
         onBack = onBack,
         onBuy = onBuy,
         onShare = onShare,
-        rowBackground = backgroundColor
+        rowBackground = backgroundColor,
       )
     }
 
@@ -122,8 +122,6 @@ internal fun BookDetailsNormalContent(
           }
         }
       }
-
     }
   }
 }
-

@@ -1,3 +1,7 @@
+/*
+ * Copyright 2024 Marlonlom
+ * SPDX-License-Identifier: Apache-2.0
+ */
 package dev.marlonlom.itbooks.features.books.detail.widgets
 
 import androidx.annotation.StringRes
@@ -30,7 +34,7 @@ import dev.marlonlom.itbooks.features.books.detail.BookDetailsItem
 private fun BookDetailsItemGridWideText(
   @StringRes titleText: Int,
   innerLabel: () -> String,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   buildAnnotatedString {
     withStyle(
@@ -76,7 +80,7 @@ internal fun BookDetailsItemAuthorsText(item: BookDetailsItem, modifier: Modifie
   BookDetailsItemGridWideText(
     titleText = R.string.text_authors,
     innerLabel = { item.authors },
-    modifier = modifier
+    modifier = modifier,
   )
 
 /**
@@ -92,5 +96,5 @@ internal fun BookDetailsItemPublisherText(item: BookDetailsItem, modifier: Modif
   BookDetailsItemGridWideText(
     titleText = R.string.text_publisher,
     innerLabel = { item.publisher },
-    modifier = modifier
+    modifier = modifier,
   )
