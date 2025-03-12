@@ -2,12 +2,12 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
+
+package dev.marlonlom.itbooks.features.books.list
+
 import dev.marlonlom.itbooks.core.database.LocalDataSource
 import dev.marlonlom.itbooks.core.database.books.detail.NewBookDetailEntity
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
-import dev.marlonlom.itbooks.features.books.list.BooksListRepository
-import dev.marlonlom.itbooks.features.books.list.BooksListUiState
-import dev.marlonlom.itbooks.features.books.list.BooksListViewModel
 import dev.marlonlom.itbooks.util.MainDispatcherRule
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
