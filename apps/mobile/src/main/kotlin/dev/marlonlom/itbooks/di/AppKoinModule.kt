@@ -5,10 +5,12 @@
 package dev.marlonlom.itbooks.di
 
 import dev.marlonlom.itbooks.core.database.di.databaseKoinModule
+import dev.marlonlom.itbooks.features.books.detail.BookDetailsRepository
+import dev.marlonlom.itbooks.features.books.detail.BookDetailsViewModel
 import dev.marlonlom.itbooks.features.books.list.BooksListRepository
 import dev.marlonlom.itbooks.features.books.list.BooksListViewModel
 import dev.marlonlom.itbooks.ui.main.MainActivityViewModel
-import org.koin.core.module.dsl.factoryOf
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -23,5 +25,12 @@ val appKoinModule = module {
   viewModelOf(::MainActivityViewModel)
 
   viewModelOf(::BooksListViewModel)
-  factoryOf(::BooksListRepository)
+  single {
+    BooksListRepository(get(), Dispatchers.IO)
+  }
+
+  viewModelOf(::BookDetailsViewModel)
+  single {
+    BookDetailsRepository(get(), Dispatchers.IO)
+  }
 }
