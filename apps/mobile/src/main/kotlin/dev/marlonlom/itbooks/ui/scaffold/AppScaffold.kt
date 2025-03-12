@@ -17,6 +17,7 @@ import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsScreenPane
 import dev.marlonlom.itbooks.features.books.list.BooksListScreen
 
@@ -42,7 +43,7 @@ fun AppScaffold() {
     directive = navigator.scaffoldDirective,
     value = navigator.scaffoldValue,
     listPane = {
-      AnimatedPane {
+      AnimatedPane(modifier = Modifier.preferredWidth(300.dp)) {
         BooksListScreen(
           settingsIconClicked = {
             Log.d("AppScaffold", "Settings icon clicked.")
@@ -57,16 +58,23 @@ fun AppScaffold() {
       }
     },
     detailPane = {
-      val itBookNavigationItem = navigator.currentDestination?.content
-      BookDetailsScreenPane(
-        bookItem = itBookNavigationItem,
-        detailPaneAdaptedValue = navigator.scaffoldValue.secondary,
-        onBack = {
-          if (navigator.canNavigateBack()) {
-            navigator.navigateBack()
+      AnimatedPane {
+        BookDetailsScreenPane(
+          bookItem = navigator.currentDestination?.content,
+          listPaneAdaptedValue = navigator.scaffoldValue.secondary,
+          onBack = {
+            if (navigator.canNavigateBack()) {
+              navigator.navigateBack()
+            }
+          },
+          onBuy = {
+            Log.d("AppScaffold", "Buy book: $it")
+          },
+          onShare = {
+            Log.d("AppScaffold", "Share book: $it")
           }
-        },
-      )
+        )
+      }
     },
   )
 }
