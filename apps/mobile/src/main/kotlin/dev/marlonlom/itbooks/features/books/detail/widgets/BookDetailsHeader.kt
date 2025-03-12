@@ -37,7 +37,7 @@ internal fun BookDetailsHeader(
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
-  rowBackground: Color = MaterialTheme.colorScheme.background
+  rowBackground: Color = MaterialTheme.colorScheme.background,
 ) {
   val bookIsbn13Found = bookIsbn13()
   Row(

@@ -35,8 +35,8 @@ internal fun BookDetailsExpandedContent(
   Box(
     modifier = with(Modifier) {
       fillMaxSize()
-      .background(backgroundColor, MaterialTheme.shapes.large)
-      .padding(20.dp)
+        .background(backgroundColor, MaterialTheme.shapes.large)
+        .padding(20.dp)
     },
   ) {
     BookDetailsNormalContent(

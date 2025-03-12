@@ -72,7 +72,7 @@ fun AppScaffold() {
           },
           onShare = {
             Log.d("AppScaffold", "Share book: $it")
-          }
+          },
         )
       }
     },

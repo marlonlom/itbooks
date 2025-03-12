@@ -66,5 +66,3 @@ internal fun BookDetailsOverviewSlot(item: BookDetailsItem) {
     BookDetailsItemPublisherText(item, modifier = Modifier.fillMaxWidth())
   }
 }
-
-
