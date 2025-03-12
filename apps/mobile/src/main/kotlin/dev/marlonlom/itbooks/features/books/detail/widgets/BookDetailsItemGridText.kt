@@ -144,7 +144,7 @@ internal fun BookDetailsItemRatingText(detailsItem: BookDetailsItem, modifier: M
   BookDetailsItemGridText(
     headerText = {
       StringBuilder().also {
-        (1 until 6).forEach { num ->
+        for (num in 1 until 6) {
           it.append(if (num > detailsItem.rating) "☆" else "★")
         }
       }.toString()
