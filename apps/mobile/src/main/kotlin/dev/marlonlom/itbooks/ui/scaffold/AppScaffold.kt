@@ -16,10 +16,12 @@ import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsScreenPane
 import dev.marlonlom.itbooks.features.books.list.BooksListScreen
+import kotlinx.coroutines.launch
 
 /**
  * Mobile application scaffold composable.
@@ -30,9 +32,12 @@ import dev.marlonlom.itbooks.features.books.list.BooksListScreen
 @Composable
 fun AppScaffold() {
   val navigator = rememberListDetailPaneScaffoldNavigator<ItBookNavigationItem>()
+  val coroutineScope = rememberCoroutineScope()
 
   BackHandler(navigator.canNavigateBack()) {
-    navigator.navigateBack()
+    coroutineScope.launch {
+      navigator.navigateBack()
+    }
   }
 
   ListDetailPaneScaffold(
@@ -49,10 +54,12 @@ fun AppScaffold() {
             Log.d("AppScaffold", "Settings icon clicked.")
           },
           onBookListItemClicked = { isbn13 ->
-            navigator.navigateTo(
-              pane = ListDetailPaneScaffoldRole.Detail,
-              content = ItBookNavigationItem(isbn13),
-            )
+            coroutineScope.launch {
+              navigator.navigateTo(
+                pane = ListDetailPaneScaffoldRole.Detail,
+                contentKey = ItBookNavigationItem(isbn13),
+              )
+            }
           },
         )
       }
@@ -60,11 +67,13 @@ fun AppScaffold() {
     detailPane = {
       AnimatedPane {
         BookDetailsScreenPane(
-          bookItem = navigator.currentDestination?.content,
+          bookItem = navigator.currentDestination?.contentKey,
           listPaneAdaptedValue = navigator.scaffoldValue.secondary,
           onBack = {
             if (navigator.canNavigateBack()) {
-              navigator.navigateBack()
+              coroutineScope.launch {
+                navigator.navigateBack()
+              }
             }
           },
           onBuy = {
