@@ -26,6 +26,7 @@ internal class BookDetailsNormalContentUiTest {
       setContent {
         BookDetailsNormalContent(
           uiStateProvider = { BookDetailsUiState.None },
+          isBackButtonVisible = { true },
           onBack = {},
           onBuy = {},
           onShare = {},
@@ -42,6 +43,7 @@ internal class BookDetailsNormalContentUiTest {
       setContent {
         BookDetailsNormalContent(
           uiStateProvider = { BookDetailsUiState.Loading },
+          isBackButtonVisible = { true },
           onBack = {},
           onBuy = {},
           onShare = {},
