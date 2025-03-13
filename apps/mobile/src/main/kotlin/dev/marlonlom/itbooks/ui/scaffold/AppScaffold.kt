@@ -82,6 +82,9 @@ fun AppScaffold() {
           onShare = {
             Log.d("AppScaffold", "Share book: $it")
           },
+          onReadMore = {
+            Log.d("AppScaffold", "Read more, url: $it")
+          },
         )
       }
     },
