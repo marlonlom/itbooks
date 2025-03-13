@@ -9,7 +9,7 @@ import dev.marlonlom.itbooks.core.database.books.detail.NewBookDetailEntity
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -23,7 +23,7 @@ internal class BooksListRepositoryTest {
   private lateinit var repository: BooksListRepository
 
   @Test
-  fun `Should fetch empty books list`() = runBlocking {
+  fun `Should fetch empty books list`() = runTest {
     val datasource = object : LocalDataSource {
       override fun listNewBooks(): Flow<List<NewBookEntity>> = flowOf(emptyList())
       override suspend fun addNewBooks(books: List<NewBookEntity>) {}
@@ -38,7 +38,7 @@ internal class BooksListRepositoryTest {
   }
 
   @Test
-  fun `Should fetch non empty books list`() = runBlocking {
+  fun `Should fetch non empty books list`() = runTest {
     val datasource = object : LocalDataSource {
       override fun listNewBooks(): Flow<List<NewBookEntity>> = flowOf(
         listOf(
