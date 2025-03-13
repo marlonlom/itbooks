@@ -9,8 +9,10 @@ import dev.marlonlom.itbooks.core.database.books.detail.NewBookDetailEntity
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
 import dev.marlonlom.itbooks.util.MainDispatcherRule
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -70,16 +72,20 @@ internal class BooksListViewModelTest {
     }
     viewModel = BooksListViewModel(BooksListRepository(datasource))
     viewModel.fetchBooksList()
-    val uiState = viewModel.uiState.first()
-    assertNotNull(uiState)
-    when (uiState) {
-      is BooksListUiState.Success -> {
-        assertTrue(uiState.books.isNotEmpty())
-        assertEquals(2, uiState.books.size)
-      }
+    this.backgroundScope.launch {
+      viewModel.uiState.collectLatest { uiState ->
+        println(uiState)
+        assertNotNull(uiState)
+        when (uiState) {
+          is BooksListUiState.Success -> {
+            assertTrue(uiState.books.isNotEmpty())
+            assertEquals(2, uiState.books.size)
+          }
 
-      else -> {
-        fail()
+          else -> {
+            fail()
+          }
+        }
       }
     }
   }
