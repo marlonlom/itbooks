@@ -20,6 +20,7 @@ import dev.marlonlom.itbooks.features.books.detail.BookDetailsUiState
  * @author marlonlom
  *
  * @param uiStateProvider Action that returns book details ui state.
+ * @param isBackButtonVisible Action for checking if back navigation button should be visible.
  * @param onBack Action for back navigation.
  * @param onBuy Action for buying a book by its isbn13.
  * @param onShare Action for sharing a book by its isbn13.
@@ -27,6 +28,7 @@ import dev.marlonlom.itbooks.features.books.detail.BookDetailsUiState
 @Composable
 internal fun BookDetailsExpandedContent(
   uiStateProvider: () -> BookDetailsUiState,
+  isBackButtonVisible: () -> Boolean,
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
@@ -42,6 +44,7 @@ internal fun BookDetailsExpandedContent(
   ) {
     BookDetailsNormalContent(
       uiStateProvider = uiStateProvider,
+      isBackButtonVisible = isBackButtonVisible,
       onBack = onBack,
       onBuy = onBuy,
       onShare = onShare,

@@ -22,6 +22,7 @@ import org.koin.androidx.compose.koinViewModel
  *
  * @param bookItem Book navigation item.
  * @param listPaneAdaptedValue Book details pane adapted value.
+ * @param isBackButtonVisible Action for checking if back navigation button should be visible.
  * @param onBack Action for back navigation.
  * @param onBuy Action for buying a book by its isbn13.
  * @param onShare Action for sharing a book by its isbn13.
@@ -33,6 +34,7 @@ import org.koin.androidx.compose.koinViewModel
 fun BookDetailsScreenPane(
   bookItem: ItBookNavigationItem?,
   listPaneAdaptedValue: PaneAdaptedValue,
+  isBackButtonVisible: () -> Boolean,
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
@@ -47,6 +49,7 @@ fun BookDetailsScreenPane(
     PaneAdaptedValue.Hidden -> {
       BookDetailsNormalContent(
         uiStateProvider = { uiState },
+        isBackButtonVisible = isBackButtonVisible,
         onBack = onBack,
         onBuy = onBuy,
         onShare = onShare,
@@ -57,6 +60,7 @@ fun BookDetailsScreenPane(
     PaneAdaptedValue.Expanded -> {
       BookDetailsExpandedContent(
         uiStateProvider = { uiState },
+        isBackButtonVisible = isBackButtonVisible,
         onBack = onBack,
         onBuy = onBuy,
         onShare = onShare,
