@@ -56,7 +56,7 @@ internal fun BooksEmptyListMessage() = Column(modifier = Modifier.fillMaxSize())
       ) {
         append(stringResource(R.string.text_books_list_empty_title01))
       }
-      append("\n")
+      appendLine()
       append(stringResource(R.string.text_books_list_empty_title02))
     }
 
