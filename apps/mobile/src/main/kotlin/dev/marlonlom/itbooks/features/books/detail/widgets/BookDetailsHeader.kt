@@ -19,7 +19,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import dev.marlonlom.itbooks.R
 
 /**
  * Book details compact header composable.
@@ -39,6 +42,7 @@ internal fun BookDetailsHeader(
   onShare: (String) -> Unit,
   rowBackground: Color = MaterialTheme.colorScheme.background,
 ) {
+  val context = LocalContext.current
   val bookIsbn13Found = bookIsbn13()
   Row(
     modifier = Modifier
@@ -46,7 +50,10 @@ internal fun BookDetailsHeader(
       .background(rowBackground)
       .padding(bottom = 4.dp),
   ) {
-    IconButton(onClick = { onBack() }) {
+    IconButton(
+      modifier = Modifier.testTag("book_detail_back_btn"),
+      onClick = { onBack() },
+    ) {
       Icon(
         imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
         tint = MaterialTheme.colorScheme.secondary,
@@ -55,14 +62,27 @@ internal fun BookDetailsHeader(
     }
     Spacer(Modifier.weight(1f))
     if (bookIsbn13Found.isNotEmpty()) {
-      IconButton(onClick = { onBuy(bookIsbn13Found) }) {
+      IconButton(
+        modifier = Modifier.testTag("book_detail_buy_btn"),
+        onClick = {
+          onBuy(
+            context.getString(
+              R.string.text_book_detail_buy_url,
+              bookIsbn13Found,
+            ),
+          )
+        },
+      ) {
         Icon(
           imageVector = Icons.Rounded.ShoppingCart,
           tint = MaterialTheme.colorScheme.secondary,
           contentDescription = null,
         )
       }
-      IconButton(onClick = { onShare(bookIsbn13Found) }) {
+      IconButton(
+        modifier = Modifier.testTag("book_detail_share_btn"),
+        onClick = { onShare(bookIsbn13Found) },
+      ) {
         Icon(
           imageVector = Icons.Rounded.Share,
           tint = MaterialTheme.colorScheme.secondary,

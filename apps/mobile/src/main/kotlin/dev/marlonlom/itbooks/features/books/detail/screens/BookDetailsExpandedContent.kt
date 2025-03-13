@@ -30,6 +30,7 @@ internal fun BookDetailsExpandedContent(
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
+  onReadMore: (String) -> Unit,
 ) {
   val backgroundColor = MaterialTheme.colorScheme.surfaceVariant
   Box(
@@ -44,6 +45,7 @@ internal fun BookDetailsExpandedContent(
       onBack = onBack,
       onBuy = onBuy,
       onShare = onShare,
+      onReadMore = onReadMore,
       backgroundColor = backgroundColor,
     )
   }

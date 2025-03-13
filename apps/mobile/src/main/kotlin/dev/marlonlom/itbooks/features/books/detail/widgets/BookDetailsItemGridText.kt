@@ -107,12 +107,19 @@ internal fun BookDetailsItemPagesText(detailsItem: BookDetailsItem, modifier: Mo
  * @param modifier The modifier for this composable.
  */
 @Composable
-internal fun BookDetailsItemPriceText(detailsItem: BookDetailsItem, modifier: Modifier = Modifier) =
+internal fun BookDetailsItemPriceText(detailsItem: BookDetailsItem, modifier: Modifier = Modifier) {
+  val context = LocalContext.current
   BookDetailsItemGridText(
     headerText = { "\uD83D\uDCB5" },
-    innerLabel = { detailsItem.price },
+    innerLabel = {
+      when {
+        detailsItem.isFree -> context.getString(R.string.text_free)
+        else -> detailsItem.price
+      }
+    },
     modifier = modifier,
   )
+}
 
 /**
  * Book details item publish year grid text composable

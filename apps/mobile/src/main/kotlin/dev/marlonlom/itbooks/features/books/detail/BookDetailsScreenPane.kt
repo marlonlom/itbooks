@@ -25,6 +25,7 @@ import org.koin.androidx.compose.koinViewModel
  * @param onBack Action for back navigation.
  * @param onBuy Action for buying a book by its isbn13.
  * @param onShare Action for sharing a book by its isbn13.
+ * @param onReadMore Action for read more link clicked.
  * @param viewModel Book details viewmodel dependency.
  */
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
@@ -35,6 +36,7 @@ fun BookDetailsScreenPane(
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
+  onReadMore: (String) -> Unit,
   viewModel: BookDetailsViewModel = koinViewModel(),
 ) {
   viewModel.find(bookItem)
@@ -48,6 +50,7 @@ fun BookDetailsScreenPane(
         onBack = onBack,
         onBuy = onBuy,
         onShare = onShare,
+        onReadMore = onReadMore,
       )
     }
 
@@ -57,6 +60,7 @@ fun BookDetailsScreenPane(
         onBack = onBack,
         onBuy = onBuy,
         onShare = onShare,
+        onReadMore = onReadMore,
       )
     }
   }
