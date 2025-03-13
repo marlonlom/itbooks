@@ -30,6 +30,7 @@ import dev.marlonlom.itbooks.R
  * @author marlonlom
  *
  * @param bookIsbn13 Action for getting book isbn13.
+ * @param isBackButtonVisible Action for checking if back navigation button should be visible.
  * @param onBack Action for back navigation.
  * @param onBuy Action for buying a book by its isbn13.
  * @param onShare Action for sharing a book by its isbn13.
@@ -37,6 +38,7 @@ import dev.marlonlom.itbooks.R
 @Composable
 internal fun BookDetailsHeader(
   bookIsbn13: () -> String,
+  isBackButtonVisible: () -> Boolean,
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
@@ -50,15 +52,17 @@ internal fun BookDetailsHeader(
       .background(rowBackground)
       .padding(bottom = 4.dp),
   ) {
-    IconButton(
-      modifier = Modifier.testTag("book_detail_back_btn"),
-      onClick = { onBack() },
-    ) {
-      Icon(
-        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-        tint = MaterialTheme.colorScheme.secondary,
-        contentDescription = null,
-      )
+    if (isBackButtonVisible()) {
+      IconButton(
+        modifier = Modifier.testTag("book_detail_back_btn"),
+        onClick = { onBack() },
+      ) {
+        Icon(
+          imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+          tint = MaterialTheme.colorScheme.secondary,
+          contentDescription = null,
+        )
+      }
     }
     Spacer(Modifier.weight(1f))
     if (bookIsbn13Found.isNotEmpty()) {

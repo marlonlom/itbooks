@@ -14,11 +14,11 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
+import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsScreenPane
 import dev.marlonlom.itbooks.features.books.list.BooksListScreen
 import kotlinx.coroutines.launch
@@ -48,7 +48,7 @@ fun AppScaffold() {
     directive = navigator.scaffoldDirective,
     value = navigator.scaffoldValue,
     listPane = {
-      AnimatedPane(modifier = Modifier.preferredWidth(300.dp)) {
+      AnimatedPane {
         BooksListScreen(
           settingsIconClicked = {
             Log.d("AppScaffold", "Settings icon clicked.")
@@ -69,6 +69,10 @@ fun AppScaffold() {
         BookDetailsScreenPane(
           bookItem = navigator.currentDestination?.contentKey,
           listPaneAdaptedValue = navigator.scaffoldValue.secondary,
+          isBackButtonVisible = {
+            navigator.scaffoldValue.primary.equals(PaneAdaptedValue.Expanded)
+              .and(navigator.scaffoldValue.secondary.equals(PaneAdaptedValue.Hidden))
+          },
           onBack = {
             if (navigator.canNavigateBack()) {
               coroutineScope.launch {
