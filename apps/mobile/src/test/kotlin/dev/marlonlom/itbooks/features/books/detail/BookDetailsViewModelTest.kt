@@ -4,42 +4,55 @@
  */
 package dev.marlonlom.itbooks.features.books.detail
 
+import androidx.lifecycle.SavedStateHandle
 import dev.marlonlom.itbooks.core.database.LocalDataSource
 import dev.marlonlom.itbooks.core.database.books.detail.NewBookDetailEntity
 import dev.marlonlom.itbooks.core.database.books.list.NewBookEntity
+import dev.marlonlom.itbooks.ui.scaffold.ItBookNavigationItem
+import dev.marlonlom.itbooks.util.MainDispatcherRule
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.FixMethodOrder
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runners.MethodSorters
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-internal class BookDetailsRepositoryTest {
+internal class BookDetailsViewModelTest {
 
-  private lateinit var repository: BookDetailsRepository
+  @get:Rule
+  val mainDispatcherRule = MainDispatcherRule()
+
+  private lateinit var viewModel: BookDetailsViewModel
 
   @Test
-  fun `Should return null`() = runTest {
+  fun `Should return book detail not found as ui state`() = runTest {
     val datasource = object : LocalDataSource {
       override fun listNewBooks(): Flow<List<NewBookEntity>> = flowOf(emptyList())
       override suspend fun addNewBooks(books: List<NewBookEntity>) {}
       override fun findNewBooksDetail(isbn13: String): Flow<NewBookDetailEntity?> = flowOf(null)
       override suspend fun addNewBookDetails(books: List<NewBookDetailEntity>) {}
     }
-    repository = BookDetailsRepository(datasource)
-    repository.find("9782190866123").collect { item ->
-      assertNull(item)
+    viewModel = BookDetailsViewModel(SavedStateHandle(), BookDetailsRepository(datasource))
+    viewModel.find(ItBookNavigationItem("9781800562738"))
+    this.backgroundScope.launch {
+      viewModel.uiState.collectLatest { uiState ->
+        assertNotNull(uiState)
+        assertTrue(uiState == BookDetailsUiState.None)
+      }
     }
   }
 
   @Test
-  fun `Should return found book details`() = runTest {
+  fun `Should return found book details as ui state`() = runTest {
     val datasource = object : LocalDataSource {
       override fun listNewBooks(): Flow<List<NewBookEntity>> = flowOf(emptyList())
       override suspend fun addNewBooks(books: List<NewBookEntity>) {}
@@ -66,22 +79,32 @@ internal class BookDetailsRepositoryTest {
 
       override suspend fun addNewBookDetails(books: List<NewBookDetailEntity>) {}
     }
-    repository = BookDetailsRepository(datasource)
-    repository.find("9781617294136").collect { item ->
-      assertNotNull(item)
-      if (item != null) {
-        assertEquals("Securing DevOps", item.title)
-        assertEquals("Security in the Cloud", item.subtitle)
-        assertEquals("Julien Vehent", item.authors)
-        assertEquals("Manning", item.publisher)
-        assertEquals("English", item.language)
-        assertEquals("1617294136", item.isbn10)
-        assertEquals("9781617294136", item.isbn13)
-        assertEquals(384, item.pages)
-        assertEquals(2018, item.year)
-        assertEquals(4, item.rating)
-        assertTrue(item.picture.endsWith("9781617294136.png"))
-        assertFalse(item.isFree)
+    viewModel = BookDetailsViewModel(SavedStateHandle(), BookDetailsRepository(datasource))
+    viewModel.find(ItBookNavigationItem("9781617294136"))
+    this.backgroundScope.launch {
+      viewModel.uiState.collectLatest { uiState ->
+        assertNotNull(uiState)
+        when (uiState) {
+          is BookDetailsUiState.Success -> {
+            assertNotNull(uiState.data)
+            assertEquals("Securing DevOps", uiState.data.title)
+            assertEquals("Security in the Cloud", uiState.data.subtitle)
+            assertEquals("Julien Vehent", uiState.data.authors)
+            assertEquals("Manning", uiState.data.publisher)
+            assertEquals("English", uiState.data.language)
+            assertEquals("1617294136", uiState.data.isbn10)
+            assertEquals("9781617294136", uiState.data.isbn13)
+            assertEquals(384, uiState.data.pages)
+            assertEquals(2018, uiState.data.year)
+            assertEquals(4, uiState.data.rating)
+            assertTrue(uiState.data.picture.endsWith("9781617294136.png"))
+            assertFalse(uiState.data.isFree)
+          }
+
+          else -> {
+            fail()
+          }
+        }
       }
     }
   }
