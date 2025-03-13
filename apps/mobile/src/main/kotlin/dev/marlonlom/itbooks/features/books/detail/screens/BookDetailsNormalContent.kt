@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsUiState
@@ -40,6 +41,7 @@ import dev.marlonlom.itbooks.features.books.detail.widgets.BookDetailsHeader
  * @param onBack Action for back navigation.
  * @param onBuy Action for buying a book by its isbn13.
  * @param onShare Action for sharing a book by its isbn13.
+ * @param onReadMore Action for read more link clicked.
  * @param backgroundColor Content background color.
  */
 @OptIn(ExperimentalFoundationApi::class)
@@ -49,6 +51,7 @@ internal fun BookDetailsNormalContent(
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
   onShare: (String) -> Unit,
+  onReadMore: (String) -> Unit,
   backgroundColor: Color = MaterialTheme.colorScheme.background,
 ) {
   val uiStateProvided = uiStateProvider()
@@ -88,7 +91,11 @@ internal fun BookDetailsNormalContent(
                 .padding(bottom = 5.dp),
               color = MaterialTheme.colorScheme.surfaceVariant,
             )
-            CircularProgressIndicator(modifier = Modifier.padding(20.dp))
+            CircularProgressIndicator(
+              modifier = Modifier
+                .padding(20.dp)
+                .testTag("book_detail_loading_indicator"),
+            )
           }
         }
       }
@@ -117,7 +124,7 @@ internal fun BookDetailsNormalContent(
           item {
             BookDetailsHeadingSlot(item = this@apply)
             BookDetailsOverviewSlot(item = this@apply)
-            BookDetailsDescriptionSlot(item = this@apply)
+            BookDetailsDescriptionSlot(item = this@apply, onReadMore = onReadMore)
             Spacer(modifier = Modifier.height(48.dp))
           }
         }

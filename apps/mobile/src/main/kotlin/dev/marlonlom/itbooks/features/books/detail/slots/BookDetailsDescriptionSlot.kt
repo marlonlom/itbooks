@@ -10,10 +10,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.fromHtml
@@ -31,9 +34,11 @@ import dev.marlonlom.itbooks.features.books.detail.BookDetailsItem
  * @author marlonlom
  *
  * @param item Book details.
+ * @param onReadMore Action for read more link clicked.
  */
 @Composable
-internal fun BookDetailsDescriptionSlot(item: BookDetailsItem) {
+internal fun BookDetailsDescriptionSlot(item: BookDetailsItem, onReadMore: (String) -> Unit) {
+  val context = LocalContext.current
   buildAnnotatedString {
     withStyle(
       SpanStyle(
@@ -44,7 +49,7 @@ internal fun BookDetailsDescriptionSlot(item: BookDetailsItem) {
         fontFamily = MaterialTheme.typography.titleMedium.fontFamily,
       ),
     ) {
-      append(stringResource(R.string.text_book_details_description))
+      append(stringResource(R.string.text_book_detail_description))
     }
     appendLine()
     withStyle(
@@ -56,22 +61,26 @@ internal fun BookDetailsDescriptionSlot(item: BookDetailsItem) {
       appendLine()
     }
     withLink(
-      LinkAnnotation.Url(
-        url = stringResource(
-          R.string.text_book_detail_url,
-          item.isbn13,
+      LinkAnnotation.Clickable(
+        tag = "book_detail_read_more",
+        styles = TextLinkStyles(
+          SpanStyle(
+            color = MaterialTheme.colorScheme.secondary,
+            fontWeight = FontWeight.Bold,
+            textDecoration = TextDecoration.Underline,
+          )
         ),
+        linkInteractionListener = {
+          onReadMore(
+            context.getString(
+              R.string.text_book_detail_url,
+              item.isbn13,
+            ),
+          )
+        },
       ),
     ) {
-      withStyle(
-        SpanStyle(
-          color = MaterialTheme.colorScheme.secondary,
-          fontWeight = FontWeight.Bold,
-          textDecoration = TextDecoration.Underline,
-        ),
-      ) {
-        append(stringResource(R.string.text_read_more))
-      }
+      append(stringResource(R.string.text_read_more))
     }
   }.also {
     Text(
