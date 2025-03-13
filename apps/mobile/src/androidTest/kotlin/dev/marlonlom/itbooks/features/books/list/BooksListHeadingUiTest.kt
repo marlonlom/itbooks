@@ -4,7 +4,7 @@
  */
 package dev.marlonlom.itbooks.features.books.list
 
-import androidx.compose.ui.test.isDisplayed
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
@@ -33,8 +33,8 @@ internal class BooksListHeadingUiTest {
           },
         )
       }
-      onNodeWithText("IT Books").isDisplayed()
-      onNodeWithContentDescription("Brand image for IT Books").isDisplayed()
+      onNodeWithText("IT Books").assertIsDisplayed()
+      onNodeWithContentDescription("Brand image for IT Books").assertIsDisplayed()
       onNodeWithTag("heading_settings_btn").performClick()
       Truth.assertThat(clicked).isTrue()
     }

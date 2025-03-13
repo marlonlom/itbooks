@@ -4,7 +4,7 @@
  */
 package dev.marlonlom.itbooks.features.books.list
 
-import androidx.compose.ui.test.isDisplayed
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.isNotDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
@@ -47,18 +47,18 @@ internal class BooksListScreenUiTest {
           viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
-      onNodeWithText("IT Books").isDisplayed()
-      onNodeWithContentDescription("Brand image for IT Books").isDisplayed()
-      onNodeWithTag("heading_settings_btn").isDisplayed()
-      onNodeWithContentDescription("Image for books empty list").isDisplayed()
+      onNodeWithText("IT Books").assertIsDisplayed()
+      onNodeWithContentDescription("Brand image for IT Books").assertIsDisplayed()
+      onNodeWithTag("heading_settings_btn").assertIsDisplayed()
+      onNodeWithContentDescription("Image for books empty list").assertIsDisplayed()
       onNodeWithText(
         text = "Oops! We couldn\'t find any books here.",
         substring = true,
-      ).isDisplayed()
+      ).assertIsDisplayed()
       onNodeWithText(
         text = "We\'re adding new books to keep you updated.",
         substring = true,
-      ).isDisplayed()
+      ).assertIsDisplayed()
     }
   }
 
@@ -81,10 +81,11 @@ internal class BooksListScreenUiTest {
           viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
-      onNodeWithText("IT Books").isDisplayed()
-      onNodeWithContentDescription("Brand image for IT Books").isDisplayed()
-      onNodeWithText("No books to show :(").isDisplayed()
-      onNodeWithTag("heading_settings_btn").isDisplayed()
+      onNodeWithText("IT Books").assertIsDisplayed()
+      onNodeWithContentDescription("Brand image for IT Books").assertIsDisplayed()
+      onNodeWithText("Oops! We couldn\'t find any books here.", true).assertIsDisplayed()
+      onNodeWithText("We\'re adding new books to keep you updated", true).assertIsDisplayed()
+      onNodeWithTag("heading_settings_btn").assertIsDisplayed()
       onNodeWithTag("heading_settings_btn").performClick()
       assertThat(settingsIconClicked).isTrue()
     }
@@ -122,12 +123,12 @@ internal class BooksListScreenUiTest {
           viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
-      onNodeWithText("IT Books").isDisplayed()
-      onNodeWithContentDescription("Brand image for IT Books").isDisplayed()
-      onNodeWithTag("heading_settings_btn").isDisplayed()
+      onNodeWithText("IT Books").assertIsDisplayed()
+      onNodeWithContentDescription("Brand image for IT Books").assertIsDisplayed()
+      onNodeWithTag("heading_settings_btn").assertIsDisplayed()
       onNodeWithText("No books to show :(").isNotDisplayed()
-      onNodeWithTag("book_list_item_row_9781491954249").isDisplayed()
-      onNodeWithTag("book_list_item_row_9781642002263").isDisplayed()
+      onNodeWithTag("book_list_item_row_9781491954249").assertIsDisplayed()
+      onNodeWithTag("book_list_item_row_9781642002263").assertIsDisplayed()
     }
   }
 
@@ -166,12 +167,12 @@ internal class BooksListScreenUiTest {
           viewModel = BooksListViewModel(BooksListRepository(datasource)),
         )
       }
-      onNodeWithText("IT Books").isDisplayed()
-      onNodeWithContentDescription("Brand image for IT Books").isDisplayed()
-      onNodeWithTag("heading_settings_btn").isDisplayed()
+      onNodeWithText("IT Books").assertIsDisplayed()
+      onNodeWithContentDescription("Brand image for IT Books").assertIsDisplayed()
+      onNodeWithTag("heading_settings_btn").assertIsDisplayed()
       onNodeWithText("No books to show :(").isNotDisplayed()
-      onNodeWithTag("book_list_item_row_9781491954249").isDisplayed()
-      onNodeWithTag("book_list_item_row_9781642002263").isDisplayed()
+      onNodeWithTag("book_list_item_row_9781491954249").assertIsDisplayed()
+      onNodeWithTag("book_list_item_row_9781642002263").assertIsDisplayed()
       onNodeWithTag("book_list_item_row_9781642002263").performClick()
       assertThat(selectedBook).isEqualTo("9781642002263")
     }

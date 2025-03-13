@@ -4,6 +4,7 @@
  */
 package dev.marlonlom.itbooks.features.books.list
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
@@ -25,15 +26,15 @@ class BooksEmptyListMessageUiTest {
       setContent {
         BooksEmptyListMessage()
       }
-      onNodeWithContentDescription("Image for books empty list").isDisplayed()
+      onNodeWithContentDescription("Image for books empty list").assertIsDisplayed()
       onNodeWithText(
         text = "Oops! We couldn\'t find any books here.",
         substring = true,
-      ).isDisplayed()
+      ).assertIsDisplayed()
       onNodeWithText(
         text = "We\'re adding new books to keep you updated.",
         substring = true,
-      ).isDisplayed()
+      ).assertIsDisplayed()
     }
   }
 }
