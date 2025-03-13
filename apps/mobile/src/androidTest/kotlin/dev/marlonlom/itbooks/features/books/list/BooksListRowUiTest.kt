@@ -4,7 +4,7 @@
  */
 package dev.marlonlom.itbooks.features.books.list
 
-import androidx.compose.ui.test.isDisplayed
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
@@ -42,9 +42,9 @@ internal class BooksListRowUiTest {
           },
         )
       }
-      onNodeWithText(book.title).isDisplayed()
-      onNodeWithText(book.price).isDisplayed()
-      onNodeWithContentDescription("Book picture for ${book.title}").isDisplayed()
+      onNodeWithText(book.title).assertIsDisplayed()
+      onNodeWithText(book.price).assertIsDisplayed()
+      onNodeWithContentDescription("Book picture for ${book.title}").assertIsDisplayed()
       onNodeWithTag("book_list_item_row_${book.isbn13}").performClick()
       Truth.assertThat(clicked).isTrue()
       Truth.assertThat(isbn13).isEqualTo(book.isbn13)
