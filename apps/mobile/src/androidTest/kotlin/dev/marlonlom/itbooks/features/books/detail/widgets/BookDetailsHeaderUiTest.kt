@@ -30,6 +30,7 @@ internal class BookDetailsHeaderUiTest {
       setContent {
         BookDetailsHeader(
           bookIsbn13 = { bookIsbn13 },
+          isBackButtonVisible = { true },
           onBack = {
             backButtonClicked = true
           },
