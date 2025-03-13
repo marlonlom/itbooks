@@ -20,5 +20,6 @@
   <string name="text_books_list_empty_title02">We\'re adding new books to keep you updated.</string>
   <!-- feature: book detail -->
   <string name="text_book_detail_url" translatable="false">https://itbook.store/books/%1$s</string>
-  <string name="text_book_details_description">About the book</string>
+  <string name="text_book_detail_buy_url" translatable="false">https://itbook.store/go/buy/%1$s</string>
+  <string name="text_book_detail_description">About the book</string>
 </resources>
