@@ -6,12 +6,13 @@ package dev.marlonlom.itbooks.features.books.detail.slots
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onChild
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.requestFocus
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsItem
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -57,7 +58,6 @@ internal class BookDetailsDescriptionSlotUiTest {
   }
 
   @Test
-  @Ignore("Not asserting that read_more url is received")
   fun shouldDisplayBookDescriptionForSelectedBookThenClickToReadMore() {
     with(composeTestRule) {
       var readMoreUrl = ""
@@ -71,7 +71,7 @@ internal class BookDetailsDescriptionSlotUiTest {
       }
       onNodeWithText("About the book", true).assertIsDisplayed()
       onNodeWithText(bookDetail.detail, true).assertIsDisplayed()
-      onNodeWithText("Read more", true).assertIsDisplayed().performClick()
+      onNodeWithText("Read more", true).onChild().requestFocus().performClick()
       assertThat(readMoreUrl).endsWith(bookDetail.isbn13)
     }
   }
