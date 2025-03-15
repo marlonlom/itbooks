@@ -5,6 +5,7 @@
 package dev.marlonlom.itbooks.di
 
 import dev.marlonlom.itbooks.core.database.di.databaseKoinModule
+import dev.marlonlom.itbooks.core.preferences.di.preferencesKoinModule
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsRepository
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsViewModel
 import dev.marlonlom.itbooks.features.books.list.BooksListRepository
@@ -21,6 +22,7 @@ import org.koin.dsl.module
  */
 val appKoinModule = module {
   includes(databaseKoinModule)
+  includes(preferencesKoinModule)
 
   viewModelOf(::MainActivityViewModel)
 

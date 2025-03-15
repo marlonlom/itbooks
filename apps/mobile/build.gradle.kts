@@ -54,6 +54,7 @@ dependencies {
   implementation(koinBom)
 
   implementation(project(":features:core:database"))
+  implementation(project(":features:core:preferences"))
 
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.core.ktx)

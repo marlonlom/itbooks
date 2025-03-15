@@ -28,4 +28,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "IT Books"
 include(":apps:mobile")
-include(":features:core:database")
+include(":features:core:database", ":features:core:preferences")
