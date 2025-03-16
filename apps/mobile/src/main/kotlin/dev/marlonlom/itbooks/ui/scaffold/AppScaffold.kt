@@ -19,8 +19,10 @@ import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaf
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsScreenPane
 import dev.marlonlom.itbooks.features.books.list.BooksListScreen
+import dev.marlonlom.itbooks.ui.util.CustomTabsOpener
 import kotlinx.coroutines.launch
 
 /**
@@ -33,6 +35,7 @@ import kotlinx.coroutines.launch
 fun AppScaffold() {
   val navigator = rememberListDetailPaneScaffoldNavigator<ItBookNavigationItem>()
   val coroutineScope = rememberCoroutineScope()
+  val context = LocalContext.current
 
   BackHandler(navigator.canNavigateBack()) {
     coroutineScope.launch {
@@ -81,13 +84,13 @@ fun AppScaffold() {
             }
           },
           onBuy = {
-            Log.d("AppScaffold", "Buy book, url($it)")
+            CustomTabsOpener.openUrl(context, it)
           },
           onShare = {
             Log.d("AppScaffold", "Share book, msg($it)")
           },
           onReadMore = {
-            Log.d("AppScaffold", "Read more, url($it)")
+            CustomTabsOpener.openUrl(context, it)
           },
         )
       }
