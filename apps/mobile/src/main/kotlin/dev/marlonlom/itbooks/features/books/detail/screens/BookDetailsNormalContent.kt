@@ -64,10 +64,10 @@ internal fun BookDetailsNormalContent(
   ) {
     stickyHeader {
       BookDetailsHeader(
-        bookIsbn13 = {
+        selectedBook = {
           when (uiStateProvided) {
-            is BookDetailsUiState.Success -> uiStateProvided.data.isbn13
-            else -> ""
+            is BookDetailsUiState.Success -> uiStateProvided.data
+            else -> null
           }
         },
         isBackButtonVisible = isBackButtonVisible,

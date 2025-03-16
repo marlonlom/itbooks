@@ -81,13 +81,13 @@ fun AppScaffold() {
             }
           },
           onBuy = {
-            Log.d("AppScaffold", "Buy book: $it")
+            Log.d("AppScaffold", "Buy book, url($it)")
           },
           onShare = {
-            Log.d("AppScaffold", "Share book: $it")
+            Log.d("AppScaffold", "Share book, msg($it)")
           },
           onReadMore = {
-            Log.d("AppScaffold", "Read more, url: $it")
+            Log.d("AppScaffold", "Read more, url($it)")
           },
         )
       }

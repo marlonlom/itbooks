@@ -22,4 +22,5 @@
   <string name="text_book_detail_url" translatable="false">https://itbook.store/books/%1$s</string>
   <string name="text_book_detail_buy_url" translatable="false">https://itbook.store/go/buy/%1$s</string>
   <string name="text_book_detail_description">About the book</string>
+  <string name="text_book_detail_sharing_message">Check out this IT book: \"%1$s\". Learn more here: %2$s.</string>
 </resources>
