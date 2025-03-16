@@ -57,6 +57,7 @@ dependencies {
   implementation(project(":features:core:preferences"))
 
   implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.browser)
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.material3)
