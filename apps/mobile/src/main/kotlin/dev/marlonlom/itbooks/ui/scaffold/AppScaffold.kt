@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import dev.marlonlom.itbooks.features.books.detail.BookDetailsScreenPane
 import dev.marlonlom.itbooks.features.books.list.BooksListScreen
 import dev.marlonlom.itbooks.ui.util.CustomTabsOpener
+import dev.marlonlom.itbooks.ui.util.SharingUtil
 import kotlinx.coroutines.launch
 
 /**
@@ -87,7 +88,7 @@ fun AppScaffold() {
             CustomTabsOpener.openUrl(context, it)
           },
           onShare = {
-            Log.d("AppScaffold", "Share book, msg($it)")
+            SharingUtil.doShare(context, it)
           },
           onReadMore = {
             CustomTabsOpener.openUrl(context, it)
