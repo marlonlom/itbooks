@@ -6,6 +6,7 @@ package dev.marlonlom.itbooks.core.preferences
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
+import dev.marlonlom.itbooks.core.preferences.PreferencesRepository.PreferenceKeys
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collectLatest
@@ -56,7 +57,10 @@ internal class PreferencesRepositoryTest {
   fun repository_testUpdateStringPreference() {
     testCoroutineScope.launch {
       with(repository!!) {
-        this.updateStringPreference("color_contrast", UserColorContrasts.MEDIUM.name)
+        this.updateStringPreference(
+          PreferenceKeys.COLOR_CONTRAST.name,
+          UserColorContrasts.MEDIUM.name
+        )
         settingsFlow.collectLatest { preferences ->
           assertThat(preferences.useDarkTheme).isEqualTo(true)
           assertThat(preferences.useDynamicColors).isEqualTo(false)
@@ -70,8 +74,8 @@ internal class PreferencesRepositoryTest {
   fun repository_testUpdateBooleanPreferences() {
     testCoroutineScope.launch {
       with(repository!!) {
-        this.updateBooleanPreference("dark_theme", true)
-        this.updateBooleanPreference("dynamic_colors", false)
+        this.updateBooleanPreference(PreferenceKeys.DARK_THEME.name, true)
+        this.updateBooleanPreference(PreferenceKeys.DYNAMIC_COLORS.name, false)
         settingsFlow.collectLatest { preferences ->
           assertThat(preferences.useDarkTheme).isEqualTo(true)
           assertThat(preferences.useDynamicColors).isEqualTo(false)
