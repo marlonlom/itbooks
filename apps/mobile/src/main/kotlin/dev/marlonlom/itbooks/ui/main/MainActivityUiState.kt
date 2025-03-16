@@ -4,6 +4,8 @@
  */
 package dev.marlonlom.itbooks.ui.main
 
+import dev.marlonlom.itbooks.core.preferences.UserPreferences
+
 /**
  * Main activity ui state data class.
  *
@@ -24,6 +26,7 @@ sealed interface MainActivityUiState {
    *
    * @author marlonlom
    *
+   * @property userPreferences User preferences data.
    */
-  data object Success : MainActivityUiState
+  data class Success(val userPreferences: UserPreferences) : MainActivityUiState
 }
