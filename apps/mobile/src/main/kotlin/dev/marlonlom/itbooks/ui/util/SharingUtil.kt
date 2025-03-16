@@ -1,3 +1,7 @@
+/*
+ * Copyright 2024 Marlonlom
+ * SPDX-License-Identifier: Apache-2.0
+ */
 package dev.marlonlom.itbooks.ui.util
 
 import android.content.Context
@@ -25,7 +29,7 @@ object SharingUtil {
         putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
         putExtra(Intent.EXTRA_TEXT, message)
       },
-      context.getString(R.string.app_name)
+      context.getString(R.string.app_name),
     )
     context.startActivity(chooser)
   }
