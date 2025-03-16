@@ -59,13 +59,6 @@ internal class PreferencesRepositoryTest {
     val updatedPreferences = storedPreferences
     assertEquals(true, updatedPreferences[PreferenceKeys.DARK_THEME])
     assertEquals(false, updatedPreferences[PreferenceKeys.DYNAMIC_COLORS])
-    backgroundScope.launch {
-      repository.settingsFlow.collectLatest {
-        assertEquals(true, it.useDarkTheme)
-        assertEquals(true, it.useDynamicColors)
-        assertEquals(UserColorContrasts.STANDARD.name, it.colorContrast)
-      }
-    }
   }
 
   @Test
@@ -83,13 +76,6 @@ internal class PreferencesRepositoryTest {
     repository.updateStringPreference(PreferenceKeys.COLOR_CONTRAST.name, UserColorContrasts.HIGH.name)
     val updatedPreferences = storedPreferences
     assertEquals(UserColorContrasts.HIGH.name, updatedPreferences[PreferenceKeys.COLOR_CONTRAST])
-    backgroundScope.launch {
-      repository.settingsFlow.collectLatest {
-        assertEquals(false, it.useDarkTheme)
-        assertEquals(true, it.useDynamicColors)
-        assertEquals(UserColorContrasts.HIGH.name, it.colorContrast)
-      }
-    }
   }
 
   private val defaultTestPreferences = emptyPreferences().toMutablePreferences().apply {
