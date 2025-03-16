@@ -23,13 +23,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.itbooks.R
+import dev.marlonlom.itbooks.features.books.detail.BookDetailsItem
 
 /**
  * Book details compact header composable.
  *
  * @author marlonlom
  *
- * @param bookIsbn13 Action for getting book isbn13.
+ * @param selectedBook Action for getting book details.
  * @param isBackButtonVisible Action for checking if back navigation button should be visible.
  * @param onBack Action for back navigation.
  * @param onBuy Action for buying a book by its isbn13.
@@ -37,7 +38,7 @@ import dev.marlonlom.itbooks.R
  */
 @Composable
 internal fun BookDetailsHeader(
-  bookIsbn13: () -> String,
+  selectedBook: () -> BookDetailsItem?,
   isBackButtonVisible: () -> Boolean,
   onBack: () -> Unit,
   onBuy: (String) -> Unit,
@@ -45,7 +46,7 @@ internal fun BookDetailsHeader(
   rowBackground: Color = MaterialTheme.colorScheme.background,
 ) {
   val context = LocalContext.current
-  val bookIsbn13Found = bookIsbn13()
+  val selectedBookItem = selectedBook()
   Row(
     modifier = Modifier
       .fillMaxWidth()
@@ -65,14 +66,14 @@ internal fun BookDetailsHeader(
       }
     }
     Spacer(Modifier.weight(1f))
-    if (bookIsbn13Found.isNotEmpty()) {
+    if (selectedBookItem != null) {
       IconButton(
         modifier = Modifier.testTag("book_detail_buy_btn"),
         onClick = {
           onBuy(
             context.getString(
               R.string.text_book_detail_buy_url,
-              bookIsbn13Found,
+              selectedBookItem.isbn13,
             ),
           )
         },
@@ -85,7 +86,19 @@ internal fun BookDetailsHeader(
       }
       IconButton(
         modifier = Modifier.testTag("book_detail_share_btn"),
-        onClick = { onShare(bookIsbn13Found) },
+        onClick = {
+          val detailUrl = context.getString(
+            R.string.text_book_detail_url,
+            selectedBookItem.isbn13,
+          )
+          onShare(
+            context.getString(
+              R.string.text_book_detail_sharing_message,
+              selectedBookItem.title,
+              detailUrl,
+            ),
+          )
+        },
       ) {
         Icon(
           imageVector = Icons.Rounded.Share,
