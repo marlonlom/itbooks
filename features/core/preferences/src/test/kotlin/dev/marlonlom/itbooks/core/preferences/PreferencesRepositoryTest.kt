@@ -97,5 +97,4 @@ internal class PreferencesRepositoryTest {
     this[PreferenceKeys.DYNAMIC_COLORS] = true
     this[PreferenceKeys.COLOR_CONTRAST] = UserColorContrasts.STANDARD.name
   }.toPreferences()
-
 }

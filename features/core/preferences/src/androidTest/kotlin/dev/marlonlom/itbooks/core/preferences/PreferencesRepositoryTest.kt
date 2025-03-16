@@ -59,7 +59,7 @@ internal class PreferencesRepositoryTest {
       with(repository!!) {
         this.updateStringPreference(
           PreferenceKeys.COLOR_CONTRAST.name,
-          UserColorContrasts.MEDIUM.name
+          UserColorContrasts.MEDIUM.name,
         )
         settingsFlow.collectLatest { preferences ->
           assertThat(preferences.useDarkTheme).isEqualTo(true)
