@@ -77,7 +77,7 @@ abstract class ItBooksDatabase : RoomDatabase() {
       context = context,
       klass = ItBooksDatabase::class.java,
       name = DATABASE_NAME,
-    ).fallbackToDestructiveMigration()
+    ).fallbackToDestructiveMigration(false)
       .addCallback(
         BooksInsertionsCallback(
           assetManager = context.assets,
