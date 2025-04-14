@@ -14,7 +14,7 @@ androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
 
 # implementation/androidx-room
-androidx-room-ktx = "androidx.room:room-ktx:2.7.0-rc03"
+androidx-room-ktx = "androidx.room:room-ktx:2.7.0"
 androidx-room-runtime = "androidx.room:room-runtime:2.7.0-rc03"
 androidx-room-compiler = "androidx.room:room-compiler:2.7.0-rc03"
 
