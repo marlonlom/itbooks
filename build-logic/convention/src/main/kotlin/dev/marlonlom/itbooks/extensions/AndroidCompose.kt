@@ -30,18 +30,16 @@ internal fun Project.configureAndroidCompose(
 
       add("implementation", versionCatalog.findLibrary("androidx-activity-compose").get())
       add("implementation", versionCatalog.findLibrary("androidx-browser").get())
-      add("implementation", versionCatalog.findLibrary("androidx-compose-material-icons-extended").get())
-      add("implementation", versionCatalog.findLibrary("androidx-compose-material3").get())
-      add("implementation", versionCatalog.findLibrary("androidx-compose-material3-wsc").get())
-      add("implementation", versionCatalog.findLibrary("androidx-compose-ui").get())
-      add("implementation", versionCatalog.findLibrary("androidx-compose-ui-graphics").get())
-      add("implementation", versionCatalog.findLibrary("androidx-compose-ui-tooling-preview").get())
+      add("implementation", versionCatalog.findLibrary("androidx-material3").get())
+      add("implementation", versionCatalog.findLibrary("androidx-ui").get())
+      add("implementation", versionCatalog.findLibrary("androidx-ui-graphics").get())
+      add("implementation", versionCatalog.findLibrary("androidx-ui-tooling-preview").get())
 
-      add("androidTestImplementation", versionCatalog.findLibrary("androidx-compose-ui-test-junit4").get())
+      add("androidTestImplementation", versionCatalog.findLibrary("androidx-ui-test-junit4").get())
 
-      add("debugImplementation", versionCatalog.findLibrary("androidx-compose-ui-tooling").get())
+      add("debugImplementation", versionCatalog.findLibrary("androidx-ui-tooling").get())
       add(
-        "debugImplementation", versionCatalog.findLibrary("androidx-compose-ui-test-manifest").get()
+        "debugImplementation", versionCatalog.findLibrary("androidx-ui-test-manifest").get()
       )
     }
   }

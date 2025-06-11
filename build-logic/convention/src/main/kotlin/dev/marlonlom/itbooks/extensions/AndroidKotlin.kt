@@ -44,15 +44,12 @@ internal fun Project.configureAndroidKotlin(
 
     dependencies {
       add("implementation", versionCatalog().findLibrary("androidx-core-ktx").get())
-      add("implementation", versionCatalog().findLibrary("kotlinx-coroutines-android").get())
-      add("implementation", versionCatalog().findLibrary("kotlinx-coroutines-core").get())
 
       add("testImplementation", versionCatalog().findLibrary("junit").get())
       add("testImplementation", versionCatalog().findLibrary("kotlinx-coroutines-test").get())
-      add("testImplementation", versionCatalog().findLibrary("mockk").get())
 
-      add("androidTestImplementation", versionCatalog().findLibrary("androidx-test-espresso-core").get())
-      add("androidTestImplementation", versionCatalog().findLibrary("androidx-test-ext-junit").get())
+      add("androidTestImplementation", versionCatalog().findLibrary("androidx-espresso-core").get())
+      add("androidTestImplementation", versionCatalog().findLibrary("androidx-junit").get())
       add("androidTestImplementation", versionCatalog().findLibrary("google-truth").get())
     }
   }
