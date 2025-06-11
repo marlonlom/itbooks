@@ -56,5 +56,9 @@ gradlePlugin {
       id = "itbooks.android.app.compose.mobile"
       implementationClass = "dev.marlonlom.itbooks.plugins.ComposeMobileAppConventionPlugin"
     }
+    register("spotless") {
+      id = "itbooks.spotless"
+      implementationClass = "dev.marlonlom.itbooks.plugins.SpotlessConventionPlugin"
+    }
   }
 }
