@@ -4,6 +4,7 @@
  */
 
 pluginManagement {
+  includeBuild("build-logic")
   repositories {
     google {
       content {
@@ -26,6 +27,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "IT Books"
+rootProject.name = "it_books"
 include(":apps:mobile")
 include(":features:core:database", ":features:core:preferences")
