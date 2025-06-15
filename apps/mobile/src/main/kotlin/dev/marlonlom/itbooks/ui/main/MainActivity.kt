@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.compose.KoinContext
 
 /**
  * Mobile app main activity class.
@@ -43,9 +42,7 @@ class MainActivity : ComponentActivity() {
 
     enableEdgeToEdge()
     setContent {
-      KoinContext {
-        MainContent(mainActivityUiState)
-      }
+      MainContent(mainActivityUiState)
     }
   }
 }

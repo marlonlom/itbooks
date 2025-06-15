@@ -23,6 +23,8 @@ dependencies {
   implementation(project(":features:core:database"))
   implementation(project(":features:core:preferences"))
 
+  implementation(project(":features:mobile:designsystem"))
+
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.browser)
   implementation(libs.androidx.core.ktx)
