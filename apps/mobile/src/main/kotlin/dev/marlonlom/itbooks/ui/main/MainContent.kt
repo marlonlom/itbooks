@@ -7,8 +7,8 @@ package dev.marlonlom.itbooks.ui.main
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import dev.marlonlom.itbooks.core.preferences.UserColorContrasts
+import dev.marlonlom.itbooks.mobile.designsystem.theme.ITBooksTheme
 import dev.marlonlom.itbooks.ui.scaffold.AppScaffold
-import dev.marlonlom.itbooks.ui.theme.ITBooksTheme
 
 /**
  * Main app content composable.
