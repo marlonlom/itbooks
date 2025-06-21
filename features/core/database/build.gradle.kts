@@ -13,12 +13,10 @@ plugins {
 
 android {
   namespace = "dev.marlonlom.itbooks.core.database"
+}
 
-  defaultConfig {
-    ksp {
-      arg("room.schemaLocation", "$projectDir/schemas")
-    }
-  }
+ksp {
+  arg("room.schemaLocation", "$projectDir/schemas")
 }
 
 dependencies {
