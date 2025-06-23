@@ -51,8 +51,8 @@ coil-test = "io.coil-kt:coil-test:2.7.0"
 
 #[libraries] gradle convention plugin
 android-gradlePlugin = "com.android.tools.build:gradle:8.10.1"
-kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21"
-compose-compiler-gradlePlugin = "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.21"
+kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0"
+compose-compiler-gradlePlugin = "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.0"
 spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:7.0.4"
 
 [plugins]
