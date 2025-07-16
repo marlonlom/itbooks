@@ -50,7 +50,7 @@ kotlinx-coroutines-test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2"
 coil-test = "io.coil-kt:coil-test:2.7.0"
 
 #[libraries] gradle convention plugin
-android-gradlePlugin = "com.android.tools.build:gradle:8.11.0"
+android-gradlePlugin = "com.android.tools.build:gradle:8.11.1"
 kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0"
 compose-compiler-gradlePlugin = "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.0"
 spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:7.1.0"
