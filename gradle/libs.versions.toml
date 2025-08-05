@@ -41,7 +41,7 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 # android-test-implementation
 androidx-arch-core-testing = "androidx.arch.core:core-testing:2.2.0"
 androidx-espresso-core = "androidx.test.espresso:espresso-core:3.6.1"
-androidx-junit = "androidx.test.ext:junit:1.2.1"
+androidx-junit = "androidx.test.ext:junit:1.3.0"
 google-truth = "com.google.truth:truth:1.4.4"
 
 # test-implementation
