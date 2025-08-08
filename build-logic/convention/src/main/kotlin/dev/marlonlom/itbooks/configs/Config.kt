@@ -16,8 +16,8 @@ object Config {
   /** Mobile android app Config. */
   val android = AndroidConfig(
     minSdkVersion = 24,
-    targetSdkVersion = 35,
-    compileSdkVersion = 35,
+    targetSdkVersion = 36,
+    compileSdkVersion = 36,
     applicationId = "dev.marlonlom.itbooks",
     versionCode = 1,
     versionName = "1.0.0",
