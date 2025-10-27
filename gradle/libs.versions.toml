@@ -30,9 +30,9 @@ androidx-material3 = { module = "androidx.compose.material3:material3" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 
 # implementation/material-adaptive
-androidx-material3-adaptive = "androidx.compose.material3.adaptive:adaptive:1.1.0"
-androidx-material3-adaptive-layout = "androidx.compose.material3.adaptive:adaptive-layout:1.1.0"
-androidx-material3-adaptive-navigation = "androidx.compose.material3.adaptive:adaptive-navigation:1.1.0"
+androidx-material3-adaptive = "androidx.compose.material3.adaptive:adaptive:1.2.0"
+androidx-material3-adaptive-layout = "androidx.compose.material3.adaptive:adaptive-layout:1.2.0"
+androidx-material3-adaptive-navigation = "androidx.compose.material3.adaptive:adaptive-navigation:1.2.0"
 
 # implementation/koin
 koin-bom = "io.insert-koin:koin-bom:4.1.1"
