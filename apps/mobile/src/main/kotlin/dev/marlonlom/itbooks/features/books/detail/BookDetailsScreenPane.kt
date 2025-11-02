@@ -67,5 +67,7 @@ fun BookDetailsScreenPane(
         onReadMore = onReadMore,
       )
     }
+
+    else -> {}
   }
 }
