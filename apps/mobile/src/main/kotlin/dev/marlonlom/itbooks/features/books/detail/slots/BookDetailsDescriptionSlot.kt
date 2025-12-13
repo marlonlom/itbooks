@@ -10,7 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
@@ -37,7 +37,7 @@ import dev.marlonlom.itbooks.features.books.detail.BookDetailsItem
  */
 @Composable
 internal fun BookDetailsDescriptionSlot(item: BookDetailsItem, onReadMore: (String) -> Unit) {
-  val context = LocalContext.current
+  val resources = LocalResources.current
   buildAnnotatedString {
     withStyle(
       SpanStyle(
@@ -71,7 +71,7 @@ internal fun BookDetailsDescriptionSlot(item: BookDetailsItem, onReadMore: (Stri
         ),
         linkInteractionListener = {
           onReadMore(
-            context.getString(
+            resources.getString(
               R.string.text_book_detail_url,
               item.isbn13,
             ),
