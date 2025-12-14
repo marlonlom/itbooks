@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -108,12 +109,12 @@ internal fun BookDetailsItemPagesText(detailsItem: BookDetailsItem, modifier: Mo
  */
 @Composable
 internal fun BookDetailsItemPriceText(detailsItem: BookDetailsItem, modifier: Modifier = Modifier) {
-  val context = LocalContext.current
+  val resources = LocalResources.current
   BookDetailsItemGridText(
     headerText = { "\uD83D\uDCB5" },
     innerLabel = {
       when {
-        detailsItem.isFree -> context.getString(R.string.text_free)
+        detailsItem.isFree -> resources.getString(R.string.text_free)
         else -> detailsItem.price
       }
     },
