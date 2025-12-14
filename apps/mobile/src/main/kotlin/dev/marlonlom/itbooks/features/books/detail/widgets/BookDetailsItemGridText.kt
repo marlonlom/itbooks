@@ -9,7 +9,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -148,7 +147,7 @@ internal fun BookDetailsItemYearText(detailsItem: BookDetailsItem, modifier: Mod
  */
 @Composable
 internal fun BookDetailsItemRatingText(detailsItem: BookDetailsItem, modifier: Modifier = Modifier) {
-  val ctx = LocalContext.current
+  val resources = LocalResources.current
   BookDetailsItemGridText(
     headerText = {
       StringBuilder().also {
@@ -157,7 +156,7 @@ internal fun BookDetailsItemRatingText(detailsItem: BookDetailsItem, modifier: M
         }
       }.toString()
     },
-    innerLabel = { ctx.getString(R.string.text_rating) },
+    innerLabel = { resources.getString(R.string.text_rating) },
     headerTextStyle = MaterialTheme.typography.headlineSmall,
     modifier = modifier,
   )
