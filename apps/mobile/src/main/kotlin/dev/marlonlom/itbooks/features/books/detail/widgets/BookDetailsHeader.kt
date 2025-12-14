@@ -19,7 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.itbooks.R
@@ -45,7 +45,7 @@ internal fun BookDetailsHeader(
   onShare: (String) -> Unit,
   rowBackground: Color = MaterialTheme.colorScheme.background,
 ) {
-  val context = LocalContext.current
+  val resources = LocalResources.current
   val selectedBookItem = selectedBook()
   Row(
     modifier = Modifier
@@ -71,7 +71,7 @@ internal fun BookDetailsHeader(
         modifier = Modifier.testTag("book_detail_buy_btn"),
         onClick = {
           onBuy(
-            context.getString(
+            resources.getString(
               R.string.text_book_detail_buy_url,
               selectedBookItem.isbn13,
             ),
@@ -87,12 +87,12 @@ internal fun BookDetailsHeader(
       IconButton(
         modifier = Modifier.testTag("book_detail_share_btn"),
         onClick = {
-          val detailUrl = context.getString(
+          val detailUrl = resources.getString(
             R.string.text_book_detail_url,
             selectedBookItem.isbn13,
           )
           onShare(
-            context.getString(
+            resources.getString(
               R.string.text_book_detail_sharing_message,
               selectedBookItem.title,
               detailUrl,
