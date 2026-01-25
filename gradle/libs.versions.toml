@@ -2,7 +2,7 @@
 agp = "9.0.0"
 kotlin = "2.3.0"
 ksp = "2.3.4"
-spotless = "8.1.0"
+spotless = "8.2.0"
 
 [libraries]
 # implementation
@@ -51,10 +51,10 @@ kotlinx-coroutines-test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2"
 coil-test = "io.coil-kt:coil-test:2.7.0"
 
 #[libraries] gradle convention plugin
-android-gradlePlugin = "com.android.tools.build:gradle:8.13.2"
+android-gradlePlugin = "com.android.tools.build:gradle:9.0.0"
 kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0"
 compose-compiler-gradlePlugin = "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.3.0"
-spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:8.1.0"
+spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:8.2.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
