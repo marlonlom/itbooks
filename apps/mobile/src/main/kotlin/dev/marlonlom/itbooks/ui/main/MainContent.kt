@@ -47,6 +47,7 @@ private fun shouldUseDynamicColor(mainActivityUiState: MainActivityUiState): Boo
 @Composable
 private fun shouldUseDarkTheme(mainActivityUiState: MainActivityUiState): Boolean = when (mainActivityUiState) {
   MainActivityUiState.Loading -> isSystemInDarkTheme()
+
   is MainActivityUiState.Success -> {
     val useDarkTheme = mainActivityUiState.userPreferences.useDarkTheme
     if (useDarkTheme.not()) isSystemInDarkTheme() else useDarkTheme
