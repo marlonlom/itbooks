@@ -35,7 +35,7 @@ androidx-material3-adaptive-layout = "androidx.compose.material3.adaptive:adapti
 androidx-material3-adaptive-navigation = "androidx.compose.material3.adaptive:adaptive-navigation:1.2.0"
 
 # implementation/koin
-koin-bom = "io.insert-koin:koin-bom:4.2.0"
+koin-bom = "io.insert-koin:koin-bom:4.2.1"
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 
