@@ -40,11 +40,12 @@ internal class BooksListScreenUiTest {
         override fun findNewBooksDetail(isbn13: String): Flow<NewBookDetailEntity?> = flowOf()
         override suspend fun addNewBookDetails(books: List<NewBookDetailEntity>) {}
       }
+      val viewModel = BooksListViewModel(BooksListRepository(datasource))
       setContent {
         BooksListScreen(
           onBookListItemClicked = {},
           settingsIconClicked = {},
-          viewModel = BooksListViewModel(BooksListRepository(datasource)),
+          viewModel = viewModel,
         )
       }
       onNodeWithText("IT Books").assertIsDisplayed()
@@ -72,13 +73,14 @@ internal class BooksListScreenUiTest {
         override suspend fun addNewBookDetails(books: List<NewBookDetailEntity>) {}
       }
       var settingsIconClicked = false
+      val viewModel = BooksListViewModel(BooksListRepository(datasource))
       setContent {
         BooksListScreen(
           onBookListItemClicked = {},
           settingsIconClicked = {
             settingsIconClicked = true
           },
-          viewModel = BooksListViewModel(BooksListRepository(datasource)),
+          viewModel = viewModel,
         )
       }
       onNodeWithText("IT Books").assertIsDisplayed()
@@ -116,11 +118,12 @@ internal class BooksListScreenUiTest {
         override fun findNewBooksDetail(isbn13: String): Flow<NewBookDetailEntity?> = flowOf()
         override suspend fun addNewBookDetails(books: List<NewBookDetailEntity>) {}
       }
+      val viewModel = BooksListViewModel(BooksListRepository(datasource))
       setContent {
         BooksListScreen(
           onBookListItemClicked = {},
           settingsIconClicked = {},
-          viewModel = BooksListViewModel(BooksListRepository(datasource)),
+          viewModel = viewModel,
         )
       }
       onNodeWithText("IT Books").assertIsDisplayed()
@@ -158,13 +161,14 @@ internal class BooksListScreenUiTest {
         override suspend fun addNewBookDetails(books: List<NewBookDetailEntity>) {}
       }
       var selectedBook = ""
+      val viewModel = BooksListViewModel(BooksListRepository(datasource))
       setContent {
         BooksListScreen(
           onBookListItemClicked = {
             selectedBook = it
           },
           settingsIconClicked = {},
-          viewModel = BooksListViewModel(BooksListRepository(datasource)),
+          viewModel = viewModel,
         )
       }
       onNodeWithText("IT Books").assertIsDisplayed()
