@@ -23,4 +23,6 @@ dependencies {
   implementation(libs.bundles.androidx.room)
 
   ksp(libs.androidx.room.compiler)
+
+  androidTestImplementation(libs.androidx.arch.core.testing)
 }
