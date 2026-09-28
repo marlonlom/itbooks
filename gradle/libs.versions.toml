@@ -7,7 +7,7 @@ spotless = "8.10.2"
 # AndroidX
 androidx-activity = "1.13.0"
 androidx-browser = "1.10.0"
-androidx-core = "1.19.0"
+androidx-core = "1.19.1"
 androidx-datastore = "1.3.0-alpha11"
 androidx-lifecycle = "2.11.0"
 androidx-room = "2.8.5"
