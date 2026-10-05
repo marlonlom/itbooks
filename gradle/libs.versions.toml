@@ -2,7 +2,7 @@
 agp = "9.4.0"
 kotlin = "2.4.20"
 ksp = "2.3.12"
-spotless = "8.10.2"
+spotless = "8.10.3"
 
 # AndroidX
 androidx-activity = "1.13.0"
